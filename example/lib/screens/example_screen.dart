@@ -81,7 +81,7 @@ class _M7ExpampleScreenState extends State<M7ExpampleScreen> {
       context,
       config: M7DetectionConfig(
         steps: _veificationSteps,
-        startWithInfoScreen: _startWithInfo,
+        startWithInfoScreen: false,
         maxSecToDetect: _timeOutDuration == 100 ? 2500 : _timeOutDuration,
         allowAfterMaxSec: _allowAfterTimeOut,
         captureButtonColor: Colors.red,

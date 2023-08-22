@@ -408,18 +408,17 @@ class _MLivelyness7DetectionScreenState
   Widget _buildBody() {
     return Stack(
       children: [
-        _isInfoStepCompleted
-            ? _buildDetectionBody()
-            : M7LivelynessInfoWidget(
-                onStartTap: () {
-                  if (mounted) {
-                    setState(
-                      () => _isInfoStepCompleted = true,
-                    );
-                  }
-                  _startLiveFeed();
-                },
-              ),
+        _buildDetectionBody(),
+        // : M7LivelynessInfoWidget(
+        //     onStartTap: () {
+        //       if (mounted) {
+        //         setState(
+        //           () => _isInfoStepCompleted = true,
+        //         );
+        //       }
+        //       _startLiveFeed();
+        //     },
+        //   ),
         Align(
           alignment: Alignment.topRight,
           child: Padding(
@@ -460,24 +459,30 @@ class _MLivelyness7DetectionScreenState
     if (scale < 1) scale = 1 / scale;
     final Widget cameraView = CameraPreview(_cameraController!);
     return Stack(
-      fit: StackFit.expand,
       children: [
+        // Center(
+        //   child: cameraView,
+        // ),
+        // BackdropFilter(
+        //   filter: ui.ImageFilter.blur(
+        //     sigmaX: 5.0,
+        //     sigmaY: 5.0,
+        //   ),
+        //   child: Container(
+        //     color: Colors.transparent,
+        //     width: double.infinity,
+        //     height: double.infinity,
+        //   ),
+        // ),
         Center(
-          child: cameraView,
-        ),
-        BackdropFilter(
-          filter: ui.ImageFilter.blur(
-            sigmaX: 5.0,
-            sigmaY: 5.0,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width -
+                MediaQuery.of(context).size.width / 4,
+            height: MediaQuery.of(context).size.width,
+            child: ClipOval(
+              child: cameraView,
+            ),
           ),
-          child: Container(
-            color: Colors.transparent,
-            width: double.infinity,
-            height: double.infinity,
-          ),
-        ),
-        Center(
-          child: cameraView,
         ),
         if (_customPaint != null) _customPaint!,
         M7LivelynessDetectionStepOverlay(

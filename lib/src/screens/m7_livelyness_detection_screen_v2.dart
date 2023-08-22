@@ -333,45 +333,87 @@ class _M7LivelynessDetectionScreenAndroidState
   @override
   Widget build(BuildContext context) {
     return Stack(
-      fit: StackFit.expand,
-      alignment: Alignment.center,
       children: [
         _isInfoStepCompleted
-            ? CameraAwesomeBuilder.custom(
-                flashMode: FlashMode.auto,
-                previewFit: CameraPreviewFit.contain,
-                aspectRatio: CameraAspectRatios.ratio_16_9,
-                sensor: Sensors.front,
-                onImageForAnalysis: (img) => _processCameraImage(img),
-                imageAnalysisConfig: AnalysisConfig(
-                  autoStart: true,
-                  androidOptions: const AndroidAnalysisOptions.nv21(
-                    width: 250,
-                  ),
-                  maxFramesPerSecond: 30,
-                ),
-                builder: (state, previewSize, previewRect) {
-                  _cameraState = state;
-                  return M7PreviewDecoratorWidget(
-                    cameraState: state,
-                    faceDetectionStream: _faceDetectionController,
-                    previewSize: previewSize,
-                    previewRect: previewRect,
-                    detectionColor:
-                        _steps[_stepsKey.currentState?.currentIndex ?? 0]
-                            .detectionColor,
-                  );
-                },
-                saveConfig: SaveConfig.photo(
-                  pathBuilder: () async {
-                    final String fileName = "${M7Utils.generate()}.jpg";
-                    final String path = await getTemporaryDirectory().then(
-                      (value) => value.path,
-                    );
-                    return "$path/$fileName";
-                  },
+            ? Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width -
+                      MediaQuery.of(context).size.width / 4,
+                  height: MediaQuery.of(context).size.width,
+                  child: ClipOval(
+                      // clipper: MyClipper(),
+                      child: CameraAwesomeBuilder.custom(
+                    flashMode: FlashMode.auto,
+                    previewFit: CameraPreviewFit.fitWidth,
+                    aspectRatio: CameraAspectRatios.ratio_16_9,
+                    sensor: Sensors.front,
+                    onImageForAnalysis: (img) => _processCameraImage(img),
+                    imageAnalysisConfig: AnalysisConfig(
+                      autoStart: true,
+                      androidOptions:
+                          const AndroidAnalysisOptions.nv21(width: 250),
+                      maxFramesPerSecond: 30,
+                    ),
+                    builder: (state, previewSize, previewRect) {
+                      _cameraState = state;
+                      return M7PreviewDecoratorWidget(
+                        cameraState: state,
+                        faceDetectionStream: _faceDetectionController,
+                        previewSize: previewSize,
+                        previewRect: previewRect,
+                        detectionColor:
+                            _steps[_stepsKey.currentState?.currentIndex ?? 0]
+                                .detectionColor,
+                      );
+                    },
+                    saveConfig: SaveConfig.photo(
+                      pathBuilder: () async {
+                        final String fileName = "${M7Utils.generate()}.jpg";
+                        final String path = await getTemporaryDirectory().then(
+                          (value) => value.path,
+                        );
+                        return "$path/$fileName";
+                      },
+                    ),
+                  )),
                 ),
               )
+            // CameraAwesomeBuilder.custom(
+            //     flashMode: FlashMode.auto,
+            //     previewFit: CameraPreviewFit.contain,
+            //     aspectRatio: CameraAspectRatios.ratio_16_9,
+            //     sensor: Sensors.front,
+            //     onImageForAnalysis: (img) => _processCameraImage(img),
+            //     imageAnalysisConfig: AnalysisConfig(
+            //       autoStart: true,
+            //       androidOptions: const AndroidAnalysisOptions.nv21(
+            //         width: 250,
+            //       ),
+            //       maxFramesPerSecond: 30,
+            //     ),
+            //     builder: (state, previewSize, previewRect) {
+            //       _cameraState = state;
+            //       return M7PreviewDecoratorWidget(
+            //         cameraState: state,
+            //         faceDetectionStream: _faceDetectionController,
+            //         previewSize: previewSize,
+            //         previewRect: previewRect,
+            //         detectionColor:
+            //             _steps[_stepsKey.currentState?.currentIndex ?? 0]
+            //                 .detectionColor,
+            //       );
+            //     },
+            //     saveConfig: SaveConfig.photo(
+            //       pathBuilder: () async {
+            //         final String fileName = "${M7Utils.generate()}.jpg";
+            //         final String path = await getTemporaryDirectory().then(
+            //           (value) => value.path,
+            //         );
+            //         return "$path/$fileName";
+            //       },
+            //     ),
+            //   )
+
             : M7LivelynessInfoWidget(
                 onStartTap: () {
                   if (!mounted) {
@@ -447,5 +489,18 @@ class _M7LivelynessDetectionScreenAndroidState
         ),
       ],
     );
+  }
+}
+
+class MyClipper extends CustomClipper<Rect> {
+  @override
+  Rect getClip(Size size) {
+    return Rect.fromLTWH(
+        0, 0, size.width - size.width / 4.7, size.height - size.width / 2);
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
+    return false;
   }
 }
