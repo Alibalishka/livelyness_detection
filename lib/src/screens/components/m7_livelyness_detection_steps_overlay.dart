@@ -47,7 +47,6 @@ class M7LivelynessDetectionStepOverlayState
       width: double.infinity,
       color: Colors.transparent,
       child: Stack(
-        fit: StackFit.expand,
         children: [
           _buildBody(),
           Visibility(
@@ -110,7 +109,7 @@ class M7LivelynessDetectionStepOverlayState
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisSize: MainAxisSize.min,
+      // mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
           height: 10,
@@ -128,7 +127,8 @@ class M7LivelynessDetectionStepOverlayState
                       topRight: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     ),
-                    color: Color.fromRGBO(77, 170, 255, 1),
+                    color: Colors.transparent,
+                    // Color.fromRGBO(77, 170, 255, 1),
                   ),
                 ),
               ),
@@ -155,7 +155,8 @@ class M7LivelynessDetectionStepOverlayState
                     padding: const EdgeInsets.all(10),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color(0xFF4DAAFF),
+                        // Colors.white,
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: const [
                           BoxShadow(
@@ -172,7 +173,7 @@ class M7LivelynessDetectionStepOverlayState
                         widget.steps[index].title,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),

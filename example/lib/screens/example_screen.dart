@@ -35,8 +35,6 @@ class _M7ExpampleScreenState extends State<M7ExpampleScreen> {
     );
   }
 
-  //* MARK: - Private Methods for Business Logic
-  //? =========================================================
   void _initValues() {
     _veificationSteps.addAll(
       [
@@ -79,6 +77,7 @@ class _M7ExpampleScreenState extends State<M7ExpampleScreen> {
     final M7CapturedImage? response =
         await M7LivelynessDetection.instance.detectLivelyness(
       context,
+      text: Text('data'),
       config: M7DetectionConfig(
         steps: _veificationSteps,
         startWithInfoScreen: false,

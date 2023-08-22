@@ -79,12 +79,14 @@ class M7LivelynessDetection {
   Future<M7CapturedImage?> detectLivelyness(
     BuildContext context, {
     required M7DetectionConfig config,
+    required Widget text,
   }) async {
     _safeAreaPadding = MediaQuery.of(context).padding;
     final M7CapturedImage? capturedFacePath = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => M7LivelynessDetectionPageV2(
           config: config,
+          text: text,
         ),
         // Platform.isIOS
         //     ? M7LivelynessDetectionScreenV1(
