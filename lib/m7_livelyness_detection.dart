@@ -80,6 +80,8 @@ class M7LivelynessDetection {
     BuildContext context, {
     required M7DetectionConfig config,
     required Widget text,
+    required Color primaryColor,
+    TextStyle? styleTextHeader,
   }) async {
     _safeAreaPadding = MediaQuery.of(context).padding;
     final M7CapturedImage? capturedFacePath = await Navigator.of(context).push(
@@ -87,6 +89,8 @@ class M7LivelynessDetection {
         builder: (context) => M7LivelynessDetectionPageV2(
           config: config,
           text: text,
+          primaryColor: primaryColor,
+          styleTextHeader: styleTextHeader,
         ),
         // Platform.isIOS
         //     ? M7LivelynessDetectionScreenV1(

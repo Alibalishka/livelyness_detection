@@ -1,4 +1,5 @@
 import 'package:m7_livelyness_detection_example/index.dart';
+import 'package:m7_livelyness_detection_example/screens/example_face_detaticon.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: M7ExpampleScreen(),
+      home: FaceDetectionPage(),
+      // home: M7ExpampleScreen(),
     );
   }
 }

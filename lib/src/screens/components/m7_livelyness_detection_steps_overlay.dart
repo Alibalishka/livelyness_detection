@@ -1,13 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:m7_livelyness_detection/index.dart';
 
 class M7LivelynessDetectionStepOverlay extends StatefulWidget {
   final List<M7LivelynessStepItem> steps;
   final VoidCallback onCompleted;
-  const M7LivelynessDetectionStepOverlay({
-    Key? key,
-    required this.steps,
-    required this.onCompleted,
-  }) : super(key: key);
+  final Color primaryColor;
+  final TextStyle? styleTextHeader;
+  const M7LivelynessDetectionStepOverlay(
+      {Key? key,
+      required this.steps,
+      required this.onCompleted,
+      required this.primaryColor,
+      this.styleTextHeader = const TextStyle(
+        color: Color(0xff3E4157),
+        fontSize: 24,
+        fontWeight: FontWeight.w800,
+      )})
+      : super(key: key);
 
   @override
   State<M7LivelynessDetectionStepOverlay> createState() =>
@@ -51,8 +60,12 @@ class M7LivelynessDetectionStepOverlayState
           _buildBody(),
           Visibility(
             visible: _isLoading,
-            child: const Center(
-              child: CircularProgressIndicator.adaptive(),
+            child: Center(
+              child: Platform.isIOS
+                  ? const CupertinoActivityIndicator()
+                  : CircularProgressIndicator(
+                      color: widget.primaryColor,
+                    ),
             ),
           ),
         ],
@@ -112,7 +125,7 @@ class M7LivelynessDetectionStepOverlayState
       // mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          height: 10,
+          height: 0,
           width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +141,6 @@ class M7LivelynessDetectionStepOverlayState
                       bottomRight: Radius.circular(20),
                     ),
                     color: Colors.transparent,
-                    // Color.fromRGBO(77, 170, 255, 1),
                   ),
                 ),
               ),
@@ -151,33 +163,18 @@ class M7LivelynessDetectionStepOverlayState
               itemCount: widget.steps.length,
               itemBuilder: (context, index) {
                 return _buildAnimatedWidget(
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF4DAAFF),
-                        // Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 5,
-                            spreadRadius: 2.5,
-                            color: Colors.black12,
-                          ),
-                        ],
-                      ),
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.symmetric(horizontal: 30),
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        widget.steps[index].title,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width / 5),
+                    child: Text(
+                      widget.steps[index].title,
+                      textAlign: TextAlign.center,
+                      style: widget.styleTextHeader,
                     ),
                   ),
                   isExiting: index != _currentIndex,
@@ -186,9 +183,7 @@ class M7LivelynessDetectionStepOverlayState
             ),
           ),
         ),
-        const Spacer(
-          flex: 14,
-        ),
+        const Spacer(flex: 14),
       ],
     );
   }
