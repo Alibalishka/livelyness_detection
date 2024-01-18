@@ -7,12 +7,14 @@ class M7LivelynessDetectionPageV2 extends StatefulWidget {
   final Widget text;
   final Color primaryColor;
   final TextStyle? styleTextHeader;
+  final PreferredSizeWidget? appBar;
 
   const M7LivelynessDetectionPageV2({
     required this.config,
     required this.text,
     this.primaryColor = Colors.blue,
     this.styleTextHeader,
+    required this.appBar,
     super.key,
   });
 
@@ -27,21 +29,22 @@ class _M7LivelynessDetectionPageV2State
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF1F2F3),
-      appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: const Text(
-            'Видео-идентификация',
-            style: TextStyle(color: Colors.black),
-          ),
-          leading: GestureDetector(
-            onTap: () => Navigator.of(context).pop(null),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: Icon(Icons.close),
-            ),
-          )),
+      appBar: widget.appBar,
+      // AppBar(
+      //     elevation: 0,
+      //     backgroundColor: Colors.white,
+      //     centerTitle: true,
+      //     title: const Text(
+      //       'Видео-идентификация',
+      //       style: TextStyle(color: Colors.black),
+      //     ),
+      //     leading: GestureDetector(
+      //       onTap: () => Navigator.of(context).pop(null),
+      //       child: const Padding(
+      //         padding: EdgeInsets.symmetric(vertical: 10),
+      //         child: Icon(Icons.close),
+      //       ),
+      //     )),
       body: SafeArea(
         child: M7LivelynessDetectionScreenV2(
           config: widget.config,

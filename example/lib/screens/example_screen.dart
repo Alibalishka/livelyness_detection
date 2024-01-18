@@ -80,6 +80,7 @@ class _M7ExpampleScreenState extends State<M7ExpampleScreen> {
       primaryColor: const Color.fromRGBO(229, 101, 83, 1),
       styleTextHeader: TextStyle(),
       text: Text('data'),
+      appBar: AppBar(),
       config: M7DetectionConfig(
         steps: _veificationSteps,
         startWithInfoScreen: false,

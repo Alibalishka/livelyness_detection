@@ -81,6 +81,7 @@ class M7LivelynessDetection {
     required M7DetectionConfig config,
     required Widget text,
     required Color primaryColor,
+    required PreferredSizeWidget? appBar,
     TextStyle? styleTextHeader,
   }) async {
     _safeAreaPadding = MediaQuery.of(context).padding;
@@ -91,6 +92,7 @@ class M7LivelynessDetection {
           text: text,
           primaryColor: primaryColor,
           styleTextHeader: styleTextHeader,
+          appBar: appBar,
         ),
         // Platform.isIOS
         //     ? M7LivelynessDetectionScreenV1(

@@ -45,6 +45,7 @@ class _FaceDetectionPageState extends State<FaceDetectionPage> {
     final M7CapturedImage? response =
         await M7LivelynessDetection.instance.detectLivelyness(
       context,
+      appBar: AppBar(),
       primaryColor: const Color.fromRGBO(229, 101, 83, 1),
       config: M7DetectionConfig(
         steps: veificationSteps,
