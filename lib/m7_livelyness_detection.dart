@@ -88,24 +88,29 @@ class M7LivelynessDetection {
     final M7CapturedImage? capturedFacePath = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
-            // M7LivelynessDetectionPageV2(
-            //   config: config,
-            //   text: text,
-            //   primaryColor: primaryColor,
-            //   styleTextHeader: styleTextHeader,
-            //   appBar: appBar,
-            // ),
-            Platform.isIOS
-                ? M7LivelynessDetectionScreenV1(
-                    config: config,
-                  )
-                : M7LivelynessDetectionPageV2(
-                    config: config,
-                    text: text,
-                    primaryColor: primaryColor,
-                    styleTextHeader: styleTextHeader,
-                    appBar: appBar,
-                  ),
+            // M7LivelynessDetectionScreenV1(
+            //       config: config,
+            //       text: text,
+            //       appBar: appBar,
+            //     )
+            M7LivelynessDetectionPageV2(
+          config: config,
+          text: text,
+          primaryColor: primaryColor,
+          styleTextHeader: styleTextHeader,
+          appBar: appBar,
+        ),
+        // Platform.isIOS
+        //     ? M7LivelynessDetectionScreenV1(
+        //         config: config,
+        //       )
+        //     : M7LivelynessDetectionPageV2(
+        //         config: config,
+        //         text: text,
+        //         primaryColor: primaryColor,
+        //         styleTextHeader: styleTextHeader,
+        //         appBar: appBar,
+        //       ),
       ),
     );
     return capturedFacePath;
@@ -121,8 +126,8 @@ class M7LivelynessDetection {
     Color dotColor = const Color(0xffab48e0),
     double lineWidth = 1.6,
     double dotSize = 2.0,
-    bool displayLines = true,
-    bool displayDots = true,
+    bool displayLines = false,
+    bool displayDots = false,
     List<double>? dashValues,
   }) {
     assert(
