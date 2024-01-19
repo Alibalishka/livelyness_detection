@@ -28,5 +28,10 @@
   },
   "pod_target_xcconfig": {
     "DEFINES_MODULE": "YES"
+  },
+  "resource_bundles": {
+    "camera_avfoundation_privacy": [
+      "Resources/PrivacyInfo.xcprivacy"
+    ]
   }
 }
