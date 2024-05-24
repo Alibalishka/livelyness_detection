@@ -1,6 +1,7 @@
 //sky_engine/lib/ui/painting.dart
 import 'package:m7_livelyness_detection/index.dart';
 
+
 class M7FaceDetectorPainter extends CustomPainter {
   M7FaceDetectorPainter(
     this.face,
@@ -17,8 +18,9 @@ class M7FaceDetectorPainter extends CustomPainter {
     final Paint paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0
-      ..color = M7LivelynessDetection.instance.contourLineColor ??
-          const Color(0xffab48e0);
+      ..color = Colors.transparent;
+    // M7LivelynessDetection.instance.contourLineColor ??
+    //     const Color(0xffab48e0);
 
     void paintContour(FaceContourType type) {
       final faceContour = face.contours[type];

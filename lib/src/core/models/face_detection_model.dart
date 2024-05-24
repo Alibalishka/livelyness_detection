@@ -1,5 +1,6 @@
 import 'package:m7_livelyness_detection/index.dart';
 
+
 class FaceDetectionModel {
   final List<Face> faces;
   final Size absoluteImageSize;

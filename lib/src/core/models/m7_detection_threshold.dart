@@ -1,5 +1,6 @@
 import 'package:m7_livelyness_detection/index.dart';
 
+
 /// Configures the threshold values that will be used while verifying each step.
 abstract class M7DetectionThreshold extends Equatable {
   const M7DetectionThreshold();

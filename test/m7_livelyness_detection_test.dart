@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:m7_livelyness_detection/m7_livelyness_detection_method_channel.dart';
-import 'package:m7_livelyness_detection/m7_livelyness_detection_platform_interface.dart';
+import '../lib copy 2/m7_livelyness_detection_method_channel.dart';
+import '../lib copy 2/m7_livelyness_detection_platform_interface.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockM7LivelynessDetectionPlatform

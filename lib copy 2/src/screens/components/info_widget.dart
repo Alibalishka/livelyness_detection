@@ -1,4 +1,4 @@
-import 'package:m7_livelyness_detection/index.dart';
+import '../../../../lib copy 2/index.dart';
 
 class M7LivelynessInfoWidget extends StatefulWidget {
   final VoidCallback onStartTap;
@@ -53,22 +53,22 @@ class _M7LivelynessInfoWidgetState extends State<M7LivelynessInfoWidget> {
               height: 1.5,
             ),
           ),
-          Expanded(
-            flex: 3,
-            child: Center(
-              child: Container(
-                color: Colors.transparent,
-                child: Lottie.asset(
-                  M7AssetConstants.lottie.livelynessStart,
-                  package: M7AssetConstants.packageName,
-                  animate: true,
-                  repeat: true,
-                  reverse: false,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
+          // Expanded(
+          //   flex: 3,
+          //   child: Center(
+          //     child: Container(
+          //       color: Colors.transparent,
+          //       child: Lottie.asset(
+          //         M7AssetConstants.lottie.livelynessStart,
+          //         package: M7AssetConstants.packageName,
+          //         animate: true,
+          //         repeat: true,
+          //         reverse: false,
+          //         fit: BoxFit.contain,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Expanded(
             flex: 5,
             child: Padding(

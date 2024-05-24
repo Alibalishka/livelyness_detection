@@ -1,4 +1,4 @@
-import 'package:m7_livelyness_detection/index.dart';
+import '../../../lib copy 2/index.dart';
 
 class CACameraPreview extends StatefulWidget {
   const CACameraPreview({super.key});

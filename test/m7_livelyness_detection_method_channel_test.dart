@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:m7_livelyness_detection/m7_livelyness_detection_method_channel.dart';
+import '../lib copy 2/m7_livelyness_detection_method_channel.dart';
 
 void main() {
   MethodChannelM7LivelynessDetection platform =
